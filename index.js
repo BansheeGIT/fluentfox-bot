@@ -118,3 +118,14 @@ bot.on("text", async (ctx) => {
 
 bot.launch();
 console.log("🤖 FluentFox GPT-консультант запущен!");
+// Обманка для Render — фейковый HTTP сервер
+const http = require("http");
+
+http
+  .createServer((req, res) => {
+    res.writeHead(200);
+    res.end("Telegram bot is running");
+  })
+  .listen(process.env.PORT || 3000, () => {
+    console.log("🌀 Фейковый веб-сервер запущен на порту", process.env.PORT || 3000);
+  });
